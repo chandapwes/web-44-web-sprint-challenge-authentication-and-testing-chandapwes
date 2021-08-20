@@ -2,7 +2,7 @@
 const request = require('supertest')
 const db = require('../data/dbConfig')
 const server = require('./server')
-const User = require('./users/users-model')
+// const User = require('./users/users-model')
 
 const user1 = { id: 1, username: 'Georgia', password: 1111 }
 
@@ -30,11 +30,11 @@ describe('[Post] / register', () => {
     let user = await db('users').where({id}).first()
     expect(user).toBeTruthy()
   })
-  it('respond with the new user', async () => {
-    await db('users').insert(user1)
-    let user = await request(server).post('/auth/register')
-    expect(user.body).toMatchObject(user1)
-  })
+  // it('respond with the new user', async () => {
+  //   await db('users').insert(user1)
+  //   let user = await request(server).post('/auth/register')
+  //   expect(user.body).toMatchObject(user1)
+  // })
 })
 
 test('sanity', () => {
